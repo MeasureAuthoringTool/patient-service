@@ -3,8 +3,7 @@
 
 name: Java CI with Maven
 
-on:
-  on: [push]
+on: [push]
 
 jobs:
   maven-verify:
