@@ -1,5 +1,5 @@
 ## Use whatever base image
-FROM adoptopenjdk/openjdk16:jre-16_36
+FROM amazoncorretto:17
 
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} app.jar
