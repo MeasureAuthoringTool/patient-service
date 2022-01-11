@@ -21,7 +21,7 @@ public class PatientController {
 
   @RequestMapping(method = RequestMethod.GET)
   public ResponseEntity<Object> health() {
-    return new ResponseEntity<>("PatientController is running...", HttpStatus.OK);
+    return new ResponseEntity<Object>("PatientController is running...", HttpStatus.OK);
   }
 
   @PostMapping("/patient")
