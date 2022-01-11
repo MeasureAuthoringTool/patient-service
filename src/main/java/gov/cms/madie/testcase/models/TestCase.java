@@ -1,4 +1,4 @@
-package com.example.template.models;
+package gov.cms.madie.testcase.models;
 
 import java.sql.Date;
 
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class Patient {
+public class TestCase {
   @Id private String id;
   private Date createdAt;
   private String createdBy;

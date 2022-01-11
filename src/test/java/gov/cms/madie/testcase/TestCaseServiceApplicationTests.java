@@ -1,10 +1,10 @@
-package com.example.template;
+package gov.cms.madie.testcase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PatientServiceApplicationTests {
+class TestCaseServiceApplicationTests {
 
   @Test
   void contextLoads() {}

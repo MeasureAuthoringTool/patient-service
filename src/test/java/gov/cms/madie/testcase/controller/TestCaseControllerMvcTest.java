@@ -1,4 +1,4 @@
-package com.example.template.controller;
+package gov.cms.madie.testcase.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,38 +17,39 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
-import com.example.template.models.Patient;
-import com.example.template.repositories.PatientRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebMvcTest({PatientController.class})
-public class PatientControllerMvcTest {
+import gov.cms.madie.testcase.models.TestCase;
+import gov.cms.madie.testcase.repositories.TestCaseRepository;
 
-  @MockBean private PatientRepository repository;
+@WebMvcTest({TestCaseController.class})
+public class TestCaseControllerMvcTest {
+
+  @MockBean private TestCaseRepository repository;
   @Autowired private MockMvc mockMvc;
-  @Captor private ArgumentCaptor<Patient> patientArgumentCaptor;
+  @Captor private ArgumentCaptor<TestCase> patientArgumentCaptor;
 
-  private Patient patient;
+  private TestCase testCase;
   private static final String TEST_ID = "TESTID";
   private static final String TEST_USER = "TestUser";
   private static final String TEST_USER_2 = "TestUser2";
 
   @BeforeEach
   public void setUp() {
-    patient = new Patient();
-    patient.setId(TEST_ID);
-    patient.setCreatedBy(TEST_USER);
-    patient.setLastModifiedBy(TEST_USER_2);
+    testCase = new TestCase();
+    testCase.setId(TEST_ID);
+    testCase.setCreatedBy(TEST_USER);
+    testCase.setLastModifiedBy(TEST_USER_2);
   }
 
   @Test
-  public void testNewPatientPassed() throws Exception {
-    when(repository.save(any(Patient.class))).thenReturn(patient);
+  public void testNewTestCasePassed() throws Exception {
+    when(repository.save(any(TestCase.class))).thenReturn(testCase);
 
     mockMvc
         .perform(
-            MockMvcRequestBuilders.post("/patient")
-                .content(asJsonString(patient))
+            MockMvcRequestBuilders.post(ControllerUtil.TEST_CASE)
+                .content(asJsonString(testCase))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
         .andDo(print())
