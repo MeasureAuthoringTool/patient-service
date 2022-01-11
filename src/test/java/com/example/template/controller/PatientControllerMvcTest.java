@@ -42,14 +42,6 @@ public class PatientControllerMvcTest {
   }
 
   @Test
-  public void testHealth() throws Exception {
-    this.mockMvc
-        .perform(MockMvcRequestBuilders.get("/"))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.content().string("PatientController is running..."));
-  }
-
-  @Test
   public void testNewPatientPassed() throws Exception {
     when(repository.save(any(Patient.class))).thenReturn(patient);
 
@@ -64,7 +56,6 @@ public class PatientControllerMvcTest {
         .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(TEST_ID))
         .andExpect(MockMvcResultMatchers.jsonPath("$.createdBy").value(TEST_USER))
         .andExpect(MockMvcResultMatchers.jsonPath("$.lastModifiedBy").value(TEST_USER_2));
-
   }
 
   private String asJsonString(final Object obj) {
