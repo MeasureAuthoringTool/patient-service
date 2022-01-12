@@ -3,8 +3,6 @@ package gov.cms.madie.testcase.controller;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -27,12 +25,12 @@ public class TestCaseControllerMvcTest {
 
   @MockBean private TestCaseRepository repository;
   @Autowired private MockMvc mockMvc;
-  @Captor private ArgumentCaptor<TestCase> patientArgumentCaptor;
 
   private TestCase testCase;
   private static final String TEST_ID = "TESTID";
   private static final String TEST_USER = "TestUser";
   private static final String TEST_USER_2 = "TestUser2";
+  private static final String TEST_NAME = "TestName";
 
   @BeforeEach
   public void setUp() {
@@ -40,6 +38,7 @@ public class TestCaseControllerMvcTest {
     testCase.setId(TEST_ID);
     testCase.setCreatedBy(TEST_USER);
     testCase.setLastModifiedBy(TEST_USER_2);
+    testCase.setName(TEST_NAME);
   }
 
   @Test
@@ -56,7 +55,8 @@ public class TestCaseControllerMvcTest {
         .andExpect(MockMvcResultMatchers.status().isCreated())
         .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(TEST_ID))
         .andExpect(MockMvcResultMatchers.jsonPath("$.createdBy").value(TEST_USER))
-        .andExpect(MockMvcResultMatchers.jsonPath("$.lastModifiedBy").value(TEST_USER_2));
+        .andExpect(MockMvcResultMatchers.jsonPath("$.lastModifiedBy").value(TEST_USER_2))
+        .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(TEST_NAME));
   }
 
   private String asJsonString(final Object obj) {
