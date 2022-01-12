@@ -12,7 +12,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
 
-import gov.cms.madie.testcase.controller.TestCaseController;
 import gov.cms.madie.testcase.models.TestCase;
 import gov.cms.madie.testcase.repositories.TestCaseRepository;
 
