@@ -19,9 +19,9 @@ public class TestCaseServiceApplication {
       @Override
       public void addCorsMappings(CorsRegistry registry) {
         registry
-                .addMapping("/**")
-                .allowedMethods("PUT", "POST", "GET")
-                .allowedOrigins("http://localhost:9000", "https://dev-madie.hcqis.org");
+            .addMapping("/**")
+            .allowedMethods("PUT", "POST", "GET")
+            .allowedOrigins("http://localhost:9000", "https://dev-madie.hcqis.org");
       }
     };
   }

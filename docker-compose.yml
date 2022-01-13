@@ -1,6 +1,6 @@
 version: "3"
 services:
-  madie-patient:
+  madie-test-case:
     build:
       context: .
     volumes:
