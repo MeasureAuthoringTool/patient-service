@@ -8,11 +8,11 @@
     <relativePath></relativePath>
     <!-- lookup parent from repository -->
   </parent>
-  <groupId>com.semanticbits.testcaseservice</groupId>
-  <artifactId>test-case-service</artifactId>
+  <groupId>com.semanticbits.patientservice</groupId>
+  <artifactId>patientservice</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>TestCase Service</name>
-  <description>Service for the TestCase application</description>
+  <name>Patient Service</name>
+  <description>Demo project for Spring Boot</description>
   <properties>
     <java.version>17</java.version>
     <mvn.checkstyle.file>madie-checkstyle.xml</mvn.checkstyle.file>

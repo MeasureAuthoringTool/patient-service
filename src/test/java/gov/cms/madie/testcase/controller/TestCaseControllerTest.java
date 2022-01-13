@@ -32,7 +32,7 @@ public class TestCaseControllerTest {
   }
 
   @Test
-  void saveTestCase() {
+  void savePatient() {
     Mockito.doReturn(testCase).when(repository).save(ArgumentMatchers.any());
 
     TestCase saveTestCase = new TestCase();
