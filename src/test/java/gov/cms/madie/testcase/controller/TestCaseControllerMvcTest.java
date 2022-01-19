@@ -20,6 +20,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import gov.cms.madie.testcase.models.TestCase;
 import gov.cms.madie.testcase.repositories.TestCaseRepository;
 
+import java.util.List;
+
 @WebMvcTest({TestCaseController.class})
 public class TestCaseControllerMvcTest {
 
@@ -57,6 +59,22 @@ public class TestCaseControllerMvcTest {
         .andExpect(MockMvcResultMatchers.jsonPath("$.createdBy").value(TEST_USER))
         .andExpect(MockMvcResultMatchers.jsonPath("$.lastModifiedBy").value(TEST_USER_2))
         .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(TEST_NAME));
+  }
+
+  @Test
+  public void getTestCases() throws Exception {
+    when(repository.findAll()).thenReturn(List.of(testCase));
+
+    mockMvc
+        .perform(MockMvcRequestBuilders.get(ControllerUtil.TEST_CASES))
+        .andExpect(MockMvcResultMatchers.status().isOk())
+        .andExpect(
+            MockMvcResultMatchers.content()
+                .string(
+                    "[{\"id\":\"TESTID\",\"name\":\"TestName\","
+                        + "\"series\":null,\"description\":null,\"createdAt\":null,"
+                        + "\"createdBy\":\"TestUser\",\"lastModifiedAt\":null,"
+                        + "\"lastModifiedBy\":\"TestUser2\"}]"));
   }
 
   private String asJsonString(final Object obj) {
